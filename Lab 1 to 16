@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PHP If and Switch Statement Labs</title>
+    <style>
+        body{
+            font-family: Arial;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container{
+            width: 80%;
+            margin: auto;
+        }
+
+        .box{
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        h2{
+            color: darkblue;
+        }
+
+        input, select{
+            padding: 8px;
+            margin: 5px;
+        }
+
+        button{
+            padding: 8px 15px;
+            background: darkblue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .result{
+            margin-top: 10px;
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- LAB 1 -->
+<div class="box">
+<h2>Lab 1: Basic If Statement</h2>
+
+<form method="post">
+    <input type="number" name="age" placeholder="Enter Your Age">
+    <button type="submit" name="lab1">Check</button>
+</form>
+
+<div class="result">
+<?php
+if(isset($_POST['lab1'])){
+
+    $age = $_POST['age'];
+
+    if($age >= 18){
+        echo "You are eligible to vote";
+    } else {
+        echo "You are not eligible to vote";
+    }
+
+}
+?>
+</div>
+</div>
+
+<!-- LAB 2 -->
+<div class="box">
+<h2>Lab 2: Positive or Negative</h2>
+
+<form method="post">
+    <input type="number" name="num2" placeholder="Enter Number">
+    <button type="submit" name="lab2">Check</button>
+</form>
+
+<div class="result">
+<?php
+if(isset($_POST['lab2'])){
+    $num = $_POST['num2'];
+
+    if($num >= 0){
+        echo "Positive Number";
+    } else {
+        echo "Negative Number";
+    }
+}
+?>
+</div>
+</div>
+
+<!-- LAB 3 -->
+<div class="box">
+<h2>Lab 3: Grade Checker</h2>
+
+<form method="post">
+    <input type="number" name="grade" placeholder="Enter Grade">
+    <button type="submit" name="lab3">Check</button>
+</form>
+
+<div class="result">
+<?php
+if(isset($_POST['lab3'])){
+    $grade = $_POST['grade'];
+
+    if($grade >= 90 && $grade <= 100){
+        echo "Excellent";
+    } elseif($grade >= 80){
+        echo "Good";
+    } elseif($grade >= 70){
+        echo "Average";
+    } else {
+        echo "Failed";
+    }
+}
+?>
+</div>
+</div>
+
+<!-- LAB 4 -->
+<div class="box">
+<h2>Lab 4: Even or Odd</h2>
+
+<form method="post">
+    <input type="number" name="num4" placeholder="Enter Number">
+    <button type="submit" name="lab4">Check</button>
+</form>
+
+<div class="result">
+<?php
+if(isset($_POST['lab4'])){
+    $num = $_POST['num4'];
+
+    if($num % 2 == 0){
+        echo "Even Number";
+    } else {
+        echo "Odd Number";
+    }
+}
+?>
+</div>
+</div>
+
+<!-- LAB 5 -->
+<div class="box">
+<h2>Lab 5: Largest of Three Numbers</h2>
+
+<form method="post">
+    <input type="number" name="n1" placeholder="First Number">
+    <input type="number" name="n2" placeholder="Second Number">
+    <input type="number" name="n3" placeholder="Third Number">
+    <button type="submit" name="lab5">Find Largest</button>
+</form>
+
+<div class="result">
+<?php
+if(isset($_POST['lab5'])){
+    $a = $_POST['n1'];
+    $b = $_POST['n2'];
+    $c = $_POST['n3'];
+
+    if($a >= $b && $a >= $c){
+        echo "Largest Number: $a";
+    } elseif($b >= $a && $b >= $c){
+        echo "Largest Number: $b";
+    } else {
+        echo "Largest Number: $c";
+    }
+}
+?>
+</div>
+</div>
+
+<!-- LAB 6 -->
+<div class="box">
+<h2>Lab 6: Password Checker</h2>
+
+<form method="post">
+    <input type="password" name="pass" placeholder="Enter Password">
+    <button type="submit" name="lab6">Login</button>
+</form>
+
+<div class="result">
+<?php
+if(isset($_POST['lab6'])){
+    $password = "admin123";
+    $input = $_POST['pass'];
+
+    if($input == $password){
+        echo "Access Granted";
+    } else {
+        echo "Access Denied";
+    }
+}
+?>
+</div>
+</div>
+
+<!-- LAB 7 -->
+<div class="box">
+<h2>Lab 7: Leap Year Checker</h2>
+
+<form method="post">
+    <input type="number" name="year" placeholder="Enter Year">
+    <button type="submit" name="lab7">Check</button>
+</form>
+
+<div class="result">
+<?php
+if(isset($_POST['lab7'])){
+    $year = $_POST['year'];
+
+    if(($year % 4 == 0 && $year % 100 != 0) || ($year % 400 == 0)){
+        echo "$year is a Leap Year";
+    } else {
+        echo "$year is NOT a Leap Year";
+    }
+}
+?>
+</div>
+</div>
+
+<!-- LAB 8 -->
+<div class="box">
+<h2>Lab 8: Nested If</h2>
+
+<form method="post">
+    <input type="number" name="age8" placeholder="Enter Age">
+    <input type="text" name="citizen" placeholder="Citizenship">
+    <button type="submit" name="lab8">Check</button>
+</form>
+
+<div class="result">
+<?php
+if(isset($_POST['lab8'])){
+    $age = $_POST['age8'];
+    $citizen = $_POST['citizen'];
+
+    if($age >= 18){
+        if(strtolower($citizen) == "filipino"){
+            echo "Eligible to Vote";
+        } else {
+            echo "Not a Filipino Citizen";
+        }
+    } else {
+        echo "Underage";
+    }
+}
+?>
+</div>
+</div>
+
+<!-- LAB 9 -->
+<div class="box">
+<h2>Lab 9: Discount Calculator</h2>
+
+<form method="post">
+    <input type="number" name="amount" placeholder="Enter Purchase Amount">
+    
+    <input type="number" name="discountPercent" placeholder="Enter Discount %">
+    
+    <button type="submit" name="lab9">Calculate</button>
+</form>
+
+<div class="result">
+<?php
+if(isset($_POST['lab9'])){
+
+    $amount = $_POST['amount'];
+    $discountPercent = $_POST['discountPercent'];
+
+    $discount = ($amount * $discountPercent) / 100;
+
+    $total = $amount - $discount;
+
+    echo "Original Amount: ₱" . $amount . "<br>";
+    echo "Discount: " . $discountPercent . "%<br>";
+    echo "Discount Amount: ₱" . $discount . "<br>";
+    echo "Total Amount to Pay: ₱" . $total;
+
+}
+?>
+</div>
+</div>
+
+<!-- LAB 10 -->
+<div class="box">
+<h2>Lab 10: Simple Login System</h2>
+
+<form method="post">
+    <input type="text" name="user10" placeholder="Username">
+    <input type="password" name="pass10" placeholder="Password">
+    <button type="submit" name="lab10">Login</button>
+</form>
+
+<div class="result">
+<?php
+if(isset($_POST['lab10'])){
+    $username = "admin";
+    $password = "1234";
+
+    if($_POST['user10'] == $username && $_POST['pass10'] == $password){
+        echo "Login Successful";
+    } else {
+        echo "Invalid Username or Password";
+    }
+}
+?>
+</div>
+</div>
+
+<!-- LAB 11 -->
+<div class="box">
+<h2>Lab 11: Day of the Week</h2>
+
+<form method="post">
+    <input type="number" name="day" placeholder="Enter Number 1-7">
+    <button type="submit" name="lab11">Check Day</button>
+</form>
+
+<div class="result">
+<?php
+if(isset($_POST['lab11'])){
+
+    $day = $_POST['day'];
+
+    switch($day){
+
+        case 1:
+            $result = "Monday";
+            break;
+
+        case 2:
+            $result = "Tuesday";
+            break;
+
+        case 3:
+            $result = "Wednesday";
+            break;
+
+        case 4:
+            $result = "Thursday";
+            break;
+
+        case 5:
+            $result = "Friday";
+            break;
+
+        case 6:
+            $result = "Saturday";
+            break;
+
+        case 7:
+            $result = "Sunday";
+            break;
+
+        default:
+            $result = "Invalid Input";
+    }
+
+    echo "Day: " . $result;
+
+}
+?>
+</div>
+</div>
+
+<!-- LAB 12 -->
+<div class="box">
+<h2>Lab 12: Grade Description</h2>
+
+<form method="post">
+    <input type="text" name="letter" placeholder="Enter Grade Letter">
+    <button type="submit" name="lab12">Check</button>
+</form>
+
+<div class="result">
+<?php
+if(isset($_POST['lab12'])){
+    $grade = strtoupper($_POST['letter']);
+
+    switch($grade){
+        case "A": echo "Excellent"; break;
+        case "B": echo "Good"; break;
+        case "C": echo "Average"; break;
+        case "D": echo "Poor"; break;
+        case "F": echo "Failed"; break;
+        default: echo "Invalid Grade";
+    }
+}
+?>
+</div>
+</div>
+
+<!-- LAB 13 -->
+<div class="box">
+<h2>Lab 13: Simple Calculator</h2>
+
+<form method="post">
+    <input type="number" name="num1" placeholder="First Number">
+    <input type="number" name="num2" placeholder="Second Number">
+    <select name="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <button type="submit" name="lab13">Calculate</button>
+</form>
+
+<div class="result">
+<?php
+if(isset($_POST['lab13'])){
+    $a = $_POST['num1'];
+    $b = $_POST['num2'];
+    $op = $_POST['operator'];
+
+    switch($op){
+        case "+":
+            echo $a + $b;
+            break;
+
+        case "-":
+            echo $a - $b;
+            break;
+
+        case "*":
+            echo $a * $b;
+            break;
+
+        case "/":
+            if($b != 0){
+                echo $a / $b;
+            } else {
+                echo "Cannot divide by zero";
+            }
+            break;
+    }
+}
+?>
+</div>
+</div>
+
+<!-- LAB 14 -->
+<div class="box">
+<h2>Lab 14: Menu Selection</h2>
+
+<form method="post">
+    <input type="number" name="menu" placeholder="1-3">
+    <button type="submit" name="lab14">Select</button>
+</form>
+
+<div class="result">
+<?php
+if(isset($_POST['lab14'])){
+    switch($_POST['menu']){
+        case 1: echo "Add Selected"; break;
+        case 2: echo "Edit Selected"; break;
+        case 3: echo "Delete Selected"; break;
+        default: echo "Invalid Option";
+    }
+}
+?>
+</div>
+</div>
+
+<!-- LAB 15 -->
+<div class="box">
+<h2>Lab 15: Month Name Generator</h2>
+
+<form method="post">
+    <input type="number" name="month" placeholder="1-12">
+    <button type="submit" name="lab15">Show Month</button>
+</form>
+
+<div class="result">
+<?php
+if(isset($_POST['lab15'])){
+    switch($_POST['month']){
+        case 1: echo "January"; break;
+        case 2: echo "February"; break;
+        case 3: echo "March"; break;
+        case 4: echo "April"; break;
+        case 5: echo "May"; break;
+        case 6: echo "June"; break;
+        case 7: echo "July"; break;
+        case 8: echo "August"; break;
+        case 9: echo "September"; break;
+        case 10: echo "October"; break;
+        case 11: echo "November"; break;
+        case 12: echo "December"; break;
+        default: echo "Invalid Month";
+    }
+}
+?>
+</div>
+</div>
+
+<!-- LAB 16 -->
+<div class="box">
+<h2>Lab 16: Traffic Light System</h2>
+
+<form method="post">
+    <input type="text" name="color" placeholder="red/yellow/green">
+    <button type="submit" name="lab16">Check</button>
+</form>
+
+<div class="result">
+<?php
+if(isset($_POST['lab16'])){
+    $color = strtolower($_POST['color']);
+
+    switch($color){
+        case "red":
+            echo "STOP";
+            break;
+
+        case "yellow":
+            echo "READY";
+            break;
+
+        case "green":
+            echo "GO";
+            break;
+
+        default:
+            echo "Invalid Color";
+    }
+}
+?>
+</div>
+</div>
+
+</div>
+
+</body>
+</html>
